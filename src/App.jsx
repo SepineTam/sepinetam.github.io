@@ -1,12 +1,4 @@
-import { useEffect } from 'react'
-import ReactMarkdown from 'react-markdown'
-import { Link, Route, Routes, useParams } from 'react-router-dom'
-import remarkGfm from 'remark-gfm'
-import {
-  formatPostDate,
-  getPostBySlug,
-  posts,
-} from './lib/posts.js'
+import { Link, Route, Routes } from 'react-router-dom'
 
 function Wordmark() {
   return (
@@ -30,56 +22,7 @@ function SiteHeader() {
   )
 }
 
-function EmptyJournal() {
-  return (
-    <div className="empty-state">
-      <p className="empty-state__number" aria-hidden="true">00</p>
-      <div>
-        <h3>新的一辑正在准备。</h3>
-        <p>旧内容已经归档。下一篇文章，将从一份新的 Markdown 文件开始。</p>
-      </div>
-    </div>
-  )
-}
-
-function PostIndex() {
-  if (posts.length === 0) {
-    return <EmptyJournal />
-  }
-
-  return (
-    <ol className="post-list">
-      {posts.map((post, index) => (
-        <li key={post.slug}>
-          <article className="post-preview">
-            <p className="post-preview__number" aria-hidden="true">
-              {String(index + 1).padStart(2, '0')}
-            </p>
-            <div className="post-preview__meta">
-              <time dateTime={post.date}>{formatPostDate(post.date, post.lang)}</time>
-              {post.tags.length > 0 && <span>{post.tags.join(' · ')}</span>}
-            </div>
-            <div className="post-preview__body">
-              <h3>
-                <Link to={`/posts/${post.slug}`}>{post.title}</Link>
-              </h3>
-              {post.summary && <p>{post.summary}</p>}
-            </div>
-            <Link className="post-preview__arrow" to={`/posts/${post.slug}`} aria-label={`阅读《${post.title}》`}>
-              ↗
-            </Link>
-          </article>
-        </li>
-      ))}
-    </ol>
-  )
-}
-
 function HomePage() {
-  useEffect(() => {
-    document.title = "Sepine's Blog"
-  }, [])
-
   return (
     <main>
       <section className="hero" aria-labelledby="hero-title">
@@ -110,72 +53,24 @@ function HomePage() {
           <h2 id="journal-title">最近写下</h2>
           <span>按时间倒序</span>
         </header>
-        <PostIndex />
+        <div className="empty-state">
+          <p className="empty-state__number" aria-hidden="true">00</p>
+          <div>
+            <h3>新的一辑正在准备。</h3>
+            <p>旧内容已经归档。下一篇文章，将从一份新的 Markdown 文件开始。</p>
+          </div>
+        </div>
       </section>
     </main>
   )
 }
 
 function NotFoundPage() {
-  useEffect(() => {
-    document.title = "页面未找到 — Sepine's Blog"
-  }, [])
-
   return (
     <main className="not-found">
       <p className="eyebrow">404 / MISSING PAGE</p>
       <h1>这一页还没有写下。</h1>
       <Link className="text-link" to="/">回到博客首页 <span aria-hidden="true">→</span></Link>
-    </main>
-  )
-}
-
-function PostPage() {
-  const { slug } = useParams()
-  const post = getPostBySlug(slug)
-
-  useEffect(() => {
-    if (post) {
-      document.title = `${post.title} — Sepine's Blog`
-    }
-  }, [post])
-
-  if (!post) {
-    return <NotFoundPage />
-  }
-
-  return (
-    <main className="article-page">
-      <Link className="article-page__back" to="/">← 返回全部文章</Link>
-      <header className="article-header">
-        <div className="article-header__meta">
-          <p className="eyebrow">FIELD NOTE / {post.lang.toUpperCase()}</p>
-          <time dateTime={post.date}>{formatPostDate(post.date, post.lang)}</time>
-        </div>
-        <h1>{post.title}</h1>
-        {post.summary && <p className="article-header__summary">{post.summary}</p>}
-        {post.tags.length > 0 && (
-          <ul className="tag-list" aria-label="文章标签">
-            {post.tags.map((tag) => <li key={tag}>{tag}</li>)}
-          </ul>
-        )}
-      </header>
-      <article className="prose">
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          components={{
-            a: ({ children, ...properties }) => (
-              <a {...properties} rel="noreferrer" target="_blank">{children}</a>
-            ),
-          }}
-        >
-          {post.content}
-        </ReactMarkdown>
-      </article>
-      <footer className="article-end">
-        <span aria-hidden="true">∎</span>
-        <p>END OF NOTE</p>
-      </footer>
     </main>
   )
 }
@@ -198,7 +93,6 @@ export default function App() {
       <div id="main-content">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/posts/:slug" element={<PostPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
