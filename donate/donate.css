@@ -1,0 +1,53 @@
+/* 基础样式设置 */
+body, html {
+    width: 100%; /* 页面宽度 */
+    height: 100%; /* 页面高度 */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* 防止水平滚动 */
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* 垂直方向排列 */
+    align-items: center; /* 水平居中对齐 */
+    justify-content: flex-start; /* 从顶部开始排列内容 */
+}
+
+h1 {
+    /*margin-top: 20px; !* 上边距 *!*/
+    margin-bottom: 20px; /* 下边距 */
+}
+
+/* 二维码容器样式 */
+.qr-container {
+    display: flex; /* 横向布局 */
+    justify-content: space-evenly; /* 图片间距均匀分布 */
+    align-items: center; /* 垂直居中 */
+    width: 100%; /* 宽度100% */
+    max-height: 70vh; /* 最大高度为视窗的70% */
+    padding: 20px; /* 添加内边距 */
+}
+
+.qr-code {
+    flex: 1; /* 使每个图片占据平均空间 */
+    max-height: 100%; /* 图片最大高度为容器高度 */
+    height: auto; /* 高度自动 */
+    width: auto; /* 宽度自动 */
+    margin: 0 10px; /* 添加左右外边距 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 添加阴影 */
+}
+
+/* 响应式布局：屏幕宽度小于600px时 */
+@media (max-width: 600px) {
+    .qr-container {
+        flex-direction: column; /* 改为竖向布局 */
+        width: 80%; /* 宽度调整为视窗的80% */
+        max-height: none; /* 移除最大高度限制 */
+    }
+
+    .qr-code {
+        max-width: 100%; /* 图片最大宽度为容器宽度 */
+        margin-bottom: 20px; /* 增加图片之间的间距 */
+    }
+}
