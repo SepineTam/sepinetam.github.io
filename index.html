@@ -1,122 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sepine Tam's Blog</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            background-color: #2b2b2b;
-            color: #ccc;
-        }
-        a {
-            color: inherit; /* Prevent default link color */
-            text-decoration: none; /* Remove underline from links */
-        }
-        .sidebar {
-            width: 25%;
-            background: #1c1c1c;
-            padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .main-content {
-            width: 75%;
-            padding: 40px;
-            box-sizing: border-box;
-            background: #2b2b2b;
-        }
-        .sidebar h1 {
-            color: #fff;
-            text-align: center;
-        }
-        .sidebar h2 {
-            color: #4CAF50;
-            text-align: center;
-            margin-top: 30px;
-        }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-            width: 100%;
-        }
-        .sidebar ul li {
-            background: #333;
-            margin: 10px 0;
-            border-radius: 5px;
-            text-align: center;
-        }
-        .sidebar ul li a {
-            display: block;
-            padding: 10px;
-            color: #ccc;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .sidebar ul li a:hover {
-            background: #4CAF50;
-            color: #fff;
-        }
-        .contact {
-            text-align: center;
-            font-size: 1.2em;
-            margin-top: 20px;
-        }
-        .linkedin-badge {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .profile-img {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-        }
-        .sidebar .social-links {
-            margin-top: 30px;
-        }
-        .sidebar .social-links a {
-            margin: 0 10px;
-            color: #ccc;
-            text-decoration: none;
-            font-size: 1.5em;
-        }
-        .sidebar .social-links a:hover {
-            color: #4CAF50;
-        }
-    </style>
-</head>
-<body>
-    <div class="sidebar">
-        <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-        <div class="badge-base LI-profile-badge" data-locale="zh_CN" data-size="large" data-theme="light" data-type="VERTICAL" data-vanity="sepinetam" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://cn.linkedin.com/in/sepinetam?trk=profile-badge">谭淞</a></div>
-        <h2>Some links</h2>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="https://x.com/sepinetam">Twitter/X</a></li>
-            <li><a href="https://youtube.com/@SepineTam/videos">YouTube</a></li>
-            <li><a href="https://www.linkedin.com/in/sepinetam">LinkedIn</a></li>
-            <li><a href="https://space.bilibili.com/341069498/">BiliBili</a></li>
-            <li><a href="https://m.okjike.com/users/31EF2D7C-687B-4EF8-A9C5-978A7B2F0DA8">即刻</a></li>
-        </ul>
-        <div class="social-links">
-            <a href="https://github.com/sepinetam"><i class="fab fa-github"></i></a>
-            <a href="mailto:sepinetam@gmail.com"><i class="fas fa-envelope"></i></a>
-            <a href="https://sepinetam.com/feed.xml"><i class="fas fa-rss"></i></a>
-            <a href="https://www.linkedin.com/in/sepinetam"><i class="fab fa-linkedin"></i></a>
-        </div>
-    </div>
-    <div class="main-content">
-        <h1>Welcome to Sepine's website</h1>
-        <p>2024 • By @SepineTam</p>
-
-    </div>
-</body>
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f2eee4" />
+    <meta
+      name="description"
+      content="Sepine Tam 的个人博客：研究、代码，以及它们之间的思考。"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Sepine's Blog</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

@@ -1,0 +1,8 @@
+*.idea
+*.DS_Store
+
+tex
+node_modules
+dist
+coverage
+.vite
